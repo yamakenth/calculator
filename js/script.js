@@ -25,3 +25,10 @@ function multiply(a, b) {
 function divide(a, b) {
   return (b === 0) ? '#DIV/0!' : a / b;
 }
+
+// perform operation on two numbers with given operator
+// take in one operator and two numbers 
+// return result 
+function operate(a, b, operator) {
+  return operator(a, b);
+}
