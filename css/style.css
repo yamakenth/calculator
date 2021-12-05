@@ -79,3 +79,11 @@ button {
 #c {
   border-radius: 34px;
 }
+
+.hovering {
+  transform: scale(1.1);
+}
+
+.hovering-red {
+  background-color: #ff6961;
+}
