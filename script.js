@@ -1,10 +1,22 @@
-// store current display value 
-let displayValue = '';
+// store current display value (start with 0)
+let displayValue = 0;
+// store array of display values until equal 
+let displayValueArray = [];
 
 // onClick eventListener for operands
-const operandsButton = document.querySelectorAll('.operands');
-operandsButton.forEach((button) => {
+const operandsButtons = document.querySelectorAll('.operands');
+operandsButtons.forEach((button) => {
   button.addEventListener('click', displayInput);
+});
+
+// onClick eventListener for operator 
+const operatorButtons = document.querySelectorAll('.operators');
+operatorButtons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    displayValueArray.push(displayValue, e.target.value);
+    console.log(`displayValue: ${displayValue}, displayValueArray: ${displayValueArray}`);
+    displayValue = 0;
+  });
 });
 
 // add two numbers 
@@ -52,7 +64,7 @@ function operate(a, b, operator) {
   return;
 }
 
-// display input on page 
+// display input on page and update displayValue 
 // take in no parameters 
 // return no results 
 function displayInput() {
@@ -72,4 +84,5 @@ function displayInput() {
   }
   
   resultField.textContent += currInput;
+  displayValue = resultField.textContent;
 }
