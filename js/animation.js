@@ -12,17 +12,17 @@ styleClearButtons.forEach((button) => {
   button.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering-clear-button'));
 });
 
-// add orange to operand buttons 
-const styleOperandButtons = document.querySelectorAll('.operand-button');
-styleOperandButtons.forEach((button) => {
-  button.addEventListener('mouseenter', (e) => e.target.classList.add('hovering-operand-button'));
-  button.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering-operand-button'));
+// add orange to operator buttons 
+const styleOperatorButtons = document.querySelectorAll('.operator-button');
+styleOperatorButtons.forEach((button) => {
+  button.addEventListener('mouseenter', (e) => e.target.classList.add('hovering-operator-button'));
+  button.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering-operator-button'));
 });
 
 // add orange to equal button
 const styleEqualButton = document.querySelector('.equal-button');
-styleEqualButton.addEventListener('mouseenter', (e) => e.target.classList.add('hovering-operand-button'));
-styleEqualButton.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering-operand-button'));
+styleEqualButton.addEventListener('mouseenter', (e) => e.target.classList.add('hovering-operator-button'));
+styleEqualButton.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering-operator-button'));
 
 // add lighter grey to number buttons 
 const styleNumberButtons = document.querySelectorAll('.number-button');
