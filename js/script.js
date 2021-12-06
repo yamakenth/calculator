@@ -34,26 +34,26 @@ function operate(a, b, operator) {
 }
 
 
-// onClick eventListener for buttons
-const inputButtons = document.querySelectorAll('button');
-inputButtons.forEach((button) => {
-  if (button.className !== 'clear-button') {
-    button.addEventListener('click', createDisplayValue);
-  }
-  
+// store the exact values on display as array 
+let displayValue = [];
+
+// onClick eventListener for buttons that display value 
+const displayButtons = document.querySelectorAll('.display-button');
+displayButtons.forEach((button) => {
+  button.addEventListener('click', createDisplayValue);
 });
 
-// create dipslay values from input 
+// create dipslay values from input and store it in an array 
 // take in no parameters 
 // return no results 
 function createDisplayValue() {
   let calculation = document.querySelector('#calculation');
-  let isEqualButton = this.classList.contains('equal-button');
+  
   let isOperandButton = this.classList.contains('operand-button');
   let isOperandPrior = calculation.textContent.slice(-1) === ' ';
   
   let input = this.value;
-  if (isEqualButton) {
+  if (isOperandButton && displayValue.length === 0) {
     return;
   } else if (isOperandButton && isOperandPrior) {
     calculation.textContent = calculation.textContent.slice(0, -3) + ' ' + input + ' ';
@@ -63,4 +63,7 @@ function createDisplayValue() {
     calculation.textContent += input;
   }
 
+  displayValue = [calculation.textContent];
 }
+
+
