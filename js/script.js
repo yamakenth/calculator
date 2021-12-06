@@ -32,3 +32,35 @@ function divide(a, b) {
 function operate(a, b, operator) {
   return operator(a, b);
 }
+
+
+// onClick eventListener for buttons
+const inputButtons = document.querySelectorAll('button');
+inputButtons.forEach((button) => {
+  if (button.className !== 'clear-button') {
+    button.addEventListener('click', createDisplayValue);
+  }
+  
+});
+
+// create dipslay values from input 
+// take in no parameters 
+// return no results 
+function createDisplayValue() {
+  let calculation = document.querySelector('#calculation');
+  let isEqualButton = this.classList.contains('equal-button');
+  let isOperandButton = this.classList.contains('operand-button');
+  let isOperandPrior = calculation.textContent.slice(-1) === ' ';
+  
+  let input = this.value;
+  if (isEqualButton) {
+    return;
+  } else if (isOperandButton && isOperandPrior) {
+    calculation.textContent = calculation.textContent.slice(0, -3) + ' ' + input + ' ';
+  } else if (isOperandButton) {
+    calculation.textContent += ' ' + input + ' ';
+  } else {
+    calculation.textContent += input;
+  }
+
+}

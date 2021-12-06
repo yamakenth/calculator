@@ -30,6 +30,7 @@ body {
   padding: 6px;
   border-radius: 12px;
   box-shadow: inset 2px 3px 5px 0px #000000b3;
+  height: 80px;
 }
 
 #calculation {
