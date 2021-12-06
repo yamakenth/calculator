@@ -1,3 +1,20 @@
+// store the exact values on display as string 
+let displayValue = '';
+
+// onClick eventListener for buttons that display value 
+const displayButtons = document.querySelectorAll('.display-button');
+displayButtons.forEach((button) => {
+  button.addEventListener('click', createDisplayValue);
+});
+
+// onClick eventListener for equal button 
+const equalButton = document.querySelector('.equal-button');
+equalButton.addEventListener('click', calculateAnswer);
+
+// onClick eventListener for AC button 
+const acButton = document.querySelector('.clear-button.all');
+acButton.addEventListener('click', clearAll);
+
 // add two numbers 
 // take in two numbers 
 // return sum
@@ -41,20 +58,6 @@ function operate(a, b, operator) {
   }
   return;
 }
-
-
-// store the exact values on display as string 
-let displayValue = '';
-
-// onClick eventListener for buttons that display value 
-const displayButtons = document.querySelectorAll('.display-button');
-displayButtons.forEach((button) => {
-  button.addEventListener('click', createDisplayValue);
-});
-
-// onClick eventListener for equal button 
-const equalButton = document.querySelector('.equal-button');
-equalButton.addEventListener('click', calculateAnswer);
 
 // create dipslay values from input and store it in an array 
 // take in no parameters 
@@ -119,4 +122,11 @@ function convertOperator(symbol) {
     return '*';
   }
   return;
+}
+
+// clear history 
+function clearAll() {
+  displayValue = '';
+  document.querySelector('#calculation').textContent = '';
+  document.querySelector('#result').textContent = '';
 }
