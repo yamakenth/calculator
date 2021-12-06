@@ -103,7 +103,7 @@ function calculateAnswer() {
 
     displayArray.splice(0, 3, result);
 
-    resultDisplay.textContent = displayArray[0] || '#DIV/0!';
+    resultDisplay.textContent = Math.round(displayArray[0] * 10e9) / 10e9 || '#DIV/0!';
   }
 }
 
