@@ -92,3 +92,7 @@ button {
 .hovering-operand-button {
   background-color: #ffb861;
 }
+
+.hovering-number-button {
+  background-color: #B8B8B8;
+}
