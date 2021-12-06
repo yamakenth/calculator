@@ -1,3 +1,12 @@
+// store current display value 
+let displayValue = '';
+
+// onClick eventListener for operands
+const operandsButton = document.querySelectorAll('.operands');
+operandsButton.forEach((button) => {
+  button.addEventListener('click', displayInput);
+});
+
 // add two numbers 
 // take in two numbers 
 // return sum
@@ -39,6 +48,28 @@ function operate(a, b, operator) {
   } else if (operator === '/') {
     return divide(a, b);
   }
-  
+
   return;
+}
+
+// display input on page 
+// take in no parameters 
+// return no results 
+function displayInput() {
+  const resultField = document.querySelector('#result');
+  const firstIsZero = resultField.textContent.length === 1 && resultField.textContent === '0';
+  const includesDot = resultField.textContent.includes('.');
+  const currInput = this.value;
+
+  // if first input is a dot then append to the zero otherwise overwrite 
+  if (firstIsZero && currInput !== '.') {
+    resultField.textContent = '';
+  }
+
+  // disale dot input if a dot already exists
+  if (includesDot && currInput === '.') {
+    return;
+  }
+  
+  resultField.textContent += currInput;
 }
