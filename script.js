@@ -15,6 +15,15 @@ operatorButtons.forEach((button) => {
   button.addEventListener('click', calculateResult);
 });
 
+// onClick eventListener for all-clear button 
+const allClearButton = document.querySelector('.all-clear');
+allClearButton.addEventListener('click', () => {
+  displayValue = '0';
+  displayValueArray = [];
+  document.querySelector('#calculation').textContent = '';
+  document.querySelector('#result').textContent = '0';
+});
+
 // add two numbers 
 // take in two numbers 
 // return sum
