@@ -12,25 +12,7 @@ operandsButtons.forEach((button) => {
 // onClick eventListener for operator 
 const operatorButtons = document.querySelectorAll('.operators');
 operatorButtons.forEach((button) => {
-  button.addEventListener('click', (e) => {
-    displayValueArray.push(displayValue, e.target.value);
-    const calculationField = document.querySelector('#calculation');
-    if (displayValueArray.length === 4) {
-      const firstNum = parseFloat(displayValueArray[0]);
-      const secondNum = parseFloat(displayValueArray[2]);
-      const operator = displayValueArray[1];
-      
-      const result = operate(firstNum, secondNum, operator);
-      console.log(result);
-
-      displayValueArray.splice(0, 3, result);
-
-    }
-    calculationField.textContent = displayValueArray;
-
-    console.log(`displayValue: ${displayValue}, displayValueArray: ${displayValueArray}`);
-    displayValue = '0';
-  });
+  button.addEventListener('click', calculateResult);
 });
 
 // add two numbers 
@@ -95,4 +77,34 @@ function displayInput() {
   displayValue += currInput;
   const resultField = document.querySelector('#result');
   resultField.textContent = displayValue;
+}
+
+// calculate result and update display 
+// take in no parameters 
+// return no results 
+function calculateResult() {
+  displayValueArray.push(displayValue, this.value);
+  // console.log(`BEOFRE: displayValue: ${displayValue}, displayValueArray: ${displayValueArray}`);
+  const calculationField = document.querySelector('#calculation');
+  if (displayValueArray.length === 4) { // when there are enough elements to operate
+    const firstNum = parseFloat(displayValueArray[0]);
+    const secondNum = parseFloat(displayValueArray[2]);
+    const operator = displayValueArray[1];
+    const result = operate(firstNum, secondNum, operator);
+    
+    if (this.value !== '=') { // if operator button is clicked  
+      displayValueArray.splice(0, 3, result);
+      displayValue = '0';
+      calculationField.textContent = displayValueArray;
+    } else { // if equal button is clicked 
+      displayValue = String(result);
+      calculationField.textContent = displayValueArray;
+      displayValueArray = [];
+    }
+    document.querySelector('#result').textContent = result;
+  } else { // where there is not eqnough element to operate just print and update value
+    calculationField.textContent = [displayValueArray];
+    displayValue = '0';
+  }
+  // console.log(`>>> AFTER: displayValue: ${displayValue}, displayValueArray: ${displayValueArray}`);
 }
