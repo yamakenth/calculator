@@ -14,7 +14,19 @@ const operatorButtons = document.querySelectorAll('.operators');
 operatorButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
     displayValueArray.push(displayValue, e.target.value);
+    const calculationField = document.querySelector('#calculation');
+    if (displayValueArray.length === 4) {
+      const firstNum = parseFloat(displayValueArray[0]);
+      const secondNum = parseFloat(displayValueArray[2]);
+      const operator = displayValueArray[1];
+      
+      const result = operate(firstNum, secondNum, operator);
+      console.log(result);
 
+      displayValueArray.splice(0, 3, result);
+
+    }
+    calculationField.textContent = displayValueArray;
 
     console.log(`displayValue: ${displayValue}, displayValueArray: ${displayValueArray}`);
     displayValue = '0';
