@@ -121,7 +121,7 @@ function displayInput() {
 // take in no parameters 
 // return no results 
 function calculateResult() {
-  // disable equal button when tyring to operat on an operand only
+  // disable equal button when tyring to operate on an operand only
   if ((displayValueArray.length < 1) && (this.value === '=')) {
     return;
   }
