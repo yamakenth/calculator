@@ -76,7 +76,7 @@ function displayInput() {
   
   displayValue += currInput;
   const resultField = document.querySelector('#result');
-  resultField.textContent = displayValue;
+  resultField.textContent = roundNumber(displayValue);
 }
 
 // calculate result and update display 
@@ -101,7 +101,7 @@ function calculateResult() {
       calculationField.textContent = formatCalculationDisplay(displayValueArray);
       displayValueArray = [];
     }
-    document.querySelector('#result').textContent = result;
+    document.querySelector('#result').textContent = roundNumber(result);
   } else { // where there is not eqnough element to operate just print and update value
     calculationField.textContent = formatCalculationDisplay(displayValueArray);
     displayValue = '0';
@@ -116,14 +116,26 @@ function formatCalculationDisplay(displayValueArray) {
   const arrayToDisplay = [];
   for (let i = 0; i < displayValueArray.length; i++) {
     let elementToPush = displayValueArray[i];
+    
     if (elementToPush === '*') {
       elementToPush = '×';
     } else if (elementToPush === '/') {
       elementToPush = '÷';
     }
-    
+
+    if (Number(elementToPush)) {
+      elementToPush = roundNumber(elementToPush);
+    }
+
     arrayToDisplay.push(elementToPush);
   }
   
   return arrayToDisplay.join(' ');
+}
+
+// round numbers to 6 decimal places
+// take in number to round
+// return rounded number 
+function roundNumber(num) {
+  return Math.round(num * 10e5) / 10e5;
 }
