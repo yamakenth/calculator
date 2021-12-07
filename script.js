@@ -85,7 +85,11 @@ function displayInput() {
   
   displayValue += currInput;
   const resultField = document.querySelector('#result');
-  resultField.textContent = roundNumber(displayValue);
+  if (currInput === '.') {
+    resultField.textContent = displayValue;
+  } else {
+    resultField.textContent = roundNumber(displayValue);
+  }
 }
 
 // calculate result and update display 
