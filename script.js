@@ -3,19 +3,19 @@ let displayValue = '0';
 // store array of display values until equal 
 let displayValueArray = [];
 
-// onClick eventListener for operands
+// eventListener for operands
 const operandsButtons = document.querySelectorAll('.operands');
 operandsButtons.forEach((button) => {
   button.addEventListener('click', displayInput);
 });
 
-// onClick eventListener for operator 
+// eventListener for operator 
 const operatorButtons = document.querySelectorAll('.operators');
 operatorButtons.forEach((button) => {
   button.addEventListener('click', calculateResult);
 });
 
-// onClick eventListener for all-clear button 
+// eventListener for all-clear button 
 const allClearButton = document.querySelector('.all-clear');
 allClearButton.addEventListener('click', () => {
   displayValue = '0';
@@ -24,11 +24,18 @@ allClearButton.addEventListener('click', () => {
   document.querySelector('#result').textContent = '0';
 });
 
-// onClick eventListener for clear button 
+// eventListener for clear button 
 const clearButton = document.querySelector('.clear');
 clearButton.addEventListener('click', () => {
   displayValue = displayValue.slice(0, -1);
   document.querySelector('#result').textContent = displayValue;
+});
+
+// animaiton eventListener for all buttons 
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+  button.addEventListener('mouseenter', (e) => e.target.classList.add('hovering'));
+  button.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering'));
 });
 
 // add two numbers 
