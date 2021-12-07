@@ -103,6 +103,12 @@ function calculateResult() {
   if (displayValueArray.length === 4) { // when there are enough elements to operate
     const firstNum = parseFloat(displayValueArray[0]);
     const secondNum = parseFloat(displayValueArray[2]);
+    if (secondNum === 0) {
+      alert('You cannot divide a number by 0!');
+      displayValueArray = displayValueArray.slice(0, -2);
+      console.log(`displayValue: ${displayValue}, displayValueArray: ${displayValueArray}`);
+      return;
+    }
     const operator = displayValueArray[1];
     const result = operate(firstNum, secondNum, operator);
     
