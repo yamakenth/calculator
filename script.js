@@ -6,12 +6,16 @@ let displayValueArray = [];
 // eventListener for operands
 const operandsButtons = document.querySelectorAll('.operands');
 operandsButtons.forEach((button) => {
+  button.addEventListener('mouseenter', (e) => e.target.classList.add('hovering-number-button'));
+  button.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering-number-button'));
   button.addEventListener('click', displayInput);
 });
 
 // eventListener for operator 
 const operatorButtons = document.querySelectorAll('.operators');
 operatorButtons.forEach((button) => {
+  button.addEventListener('mouseenter', (e) => e.target.classList.add('hovering-operator-button'));
+  button.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering-operator-button'));
   button.addEventListener('click', calculateResult);
 });
 
@@ -36,6 +40,13 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
   button.addEventListener('mouseenter', (e) => e.target.classList.add('hovering'));
   button.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering'));
+});
+
+// animation eventListner for clear buttons 
+const deleteButtons = document.querySelectorAll('.row-1 > button');
+deleteButtons.forEach((button) => {
+  button.addEventListener('mouseenter', (e) => e.target.classList.add('hovering-clear-button'));
+  button.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering-clear-button'));
 });
 
 // add two numbers 
