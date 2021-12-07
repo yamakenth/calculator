@@ -1,7 +1,9 @@
 // store current display value (start with 0)
-let displayValue = 0;
+let displayValue = '0';
 // store array of display values until equal 
 let displayValueArray = [];
+// track number of rounds of input 
+let inputRound = 1;
 
 // onClick eventListener for operands
 const operandsButtons = document.querySelectorAll('.operands');
@@ -15,7 +17,9 @@ operatorButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
     displayValueArray.push(displayValue, e.target.value);
     console.log(`displayValue: ${displayValue}, displayValueArray: ${displayValueArray}`);
-    displayValue = 0;
+    displayValue = '0';
+    inputRound++;
+    console.log(inputRound);
   });
 });
 
@@ -68,21 +72,13 @@ function operate(a, b, operator) {
 // take in no parameters 
 // return no results 
 function displayInput() {
-  const resultField = document.querySelector('#result');
-  const firstIsZero = resultField.textContent.length === 1 && resultField.textContent === '0';
-  const includesDot = resultField.textContent.includes('.');
   const currInput = this.value;
-
-  // if first input is a dot then append to the zero otherwise overwrite 
-  if (firstIsZero && currInput !== '.') {
-    resultField.textContent = '';
-  }
-
-  // disale dot input if a dot already exists
-  if (includesDot && currInput === '.') {
-    return;
+  
+  if ((displayValue.length === 1) && (displayValue === '0') && (currInput !== '.')) {
+    displayValue = '';
   }
   
-  resultField.textContent += currInput;
-  displayValue = resultField.textContent;
+  displayValue += currInput;
+  const resultField = document.querySelector('#result');
+  resultField.textContent = displayValue;
 }
