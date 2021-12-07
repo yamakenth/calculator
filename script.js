@@ -83,6 +83,11 @@ function displayInput() {
 // take in no parameters 
 // return no results 
 function calculateResult() {
+  // disable equal button when tyring to operat on an operand only
+  if ((displayValueArray.length < 1) && (this.value === '=')) {
+    return;
+  }
+  
   displayValueArray.push(displayValue, this.value);
   // console.log(`BEOFRE: displayValue: ${displayValue}, displayValueArray: ${displayValueArray}`);
   const calculationField = document.querySelector('#calculation');
