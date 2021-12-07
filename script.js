@@ -24,6 +24,13 @@ allClearButton.addEventListener('click', () => {
   document.querySelector('#result').textContent = '0';
 });
 
+// onClick eventListener for clear button 
+const clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', () => {
+  displayValue = displayValue.slice(0, -1);
+  document.querySelector('#result').textContent = displayValue;
+});
+
 // add two numbers 
 // take in two numbers 
 // return sum
