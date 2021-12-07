@@ -95,16 +95,35 @@ function calculateResult() {
     if (this.value !== '=') { // if operator button is clicked  
       displayValueArray.splice(0, 3, result);
       displayValue = '0';
-      calculationField.textContent = displayValueArray;
+      calculationField.textContent = formatCalculationDisplay(displayValueArray);
     } else { // if equal button is clicked 
       displayValue = String(result);
-      calculationField.textContent = displayValueArray;
+      calculationField.textContent = formatCalculationDisplay(displayValueArray);
       displayValueArray = [];
     }
     document.querySelector('#result').textContent = result;
   } else { // where there is not eqnough element to operate just print and update value
-    calculationField.textContent = [displayValueArray];
+    calculationField.textContent = formatCalculationDisplay(displayValueArray);
     displayValue = '0';
   }
   // console.log(`>>> AFTER: displayValue: ${displayValue}, displayValueArray: ${displayValueArray}`);
+}
+
+// format calculation display 
+// take in array to display 
+// retun string to print 
+function formatCalculationDisplay(displayValueArray) {
+  const arrayToDisplay = [];
+  for (let i = 0; i < displayValueArray.length; i++) {
+    let elementToPush = displayValueArray[i];
+    if (elementToPush === '*') {
+      elementToPush = '×';
+    } else if (elementToPush === '/') {
+      elementToPush = '÷';
+    }
+    
+    arrayToDisplay.push(elementToPush);
+  }
+  
+  return arrayToDisplay.join(' ');
 }
