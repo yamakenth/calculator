@@ -2,8 +2,6 @@
 let displayValue = '0';
 // store array of display values until equal 
 let displayValueArray = [];
-// track number of rounds of input 
-let inputRound = 1;
 
 // onClick eventListener for operands
 const operandsButtons = document.querySelectorAll('.operands');
@@ -16,10 +14,10 @@ const operatorButtons = document.querySelectorAll('.operators');
 operatorButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
     displayValueArray.push(displayValue, e.target.value);
+
+
     console.log(`displayValue: ${displayValue}, displayValueArray: ${displayValueArray}`);
     displayValue = '0';
-    inputRound++;
-    console.log(inputRound);
   });
 });
 
@@ -76,6 +74,10 @@ function displayInput() {
   
   if ((displayValue.length === 1) && (displayValue === '0') && (currInput !== '.')) {
     displayValue = '';
+  }
+
+  if ((displayValue.includes('.')) && (currInput === '.')) {
+    return;
   }
   
   displayValue += currInput;
