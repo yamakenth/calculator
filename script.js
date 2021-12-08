@@ -29,13 +29,14 @@ operatorButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
     const currOperator = e.target.value;
     updateCurrValues(currOperator);
+    // display calculation 
+    calculationDisplay.textContent = currValues;
     // operate when currValues array have enough elements
     if (currValues.length === 4) {
       const result = calculateResult(currOperator);
       // display result in result display 
       resultDisplay.textContent = result;
     }
-
 
 
   });
