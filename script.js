@@ -67,6 +67,12 @@ allButtons.forEach((button) => {
   button.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering'));
 });
 
+// eventListner for delete (clear and all-clear) buttons 
+deleteButtons.forEach((button) => {
+  button.addEventListener('mouseenter', (e) => e.target.classList.add('hovering-clear-button'));
+  button.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering-clear-button'));
+});
+
 // append input to currValue
 // take in current operand input 
 // return no result 
@@ -207,16 +213,3 @@ function formatCalculationDisplay(currValues) {
 function roundNumber(num, dec) {
   return Math.round(num * (10 ** dec)) / (10 ** dec);
 }
-
-
-/*
-
-
-// animation eventListner for clear buttons 
-const deleteButtons = document.querySelectorAll('.row-1 > button');
-deleteButtons.forEach((button) => {
-  button.addEventListener('mouseenter', (e) => e.target.classList.add('hovering-clear-button'));
-  button.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering-clear-button'));
-});
-
-*/
