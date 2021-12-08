@@ -18,6 +18,9 @@ operandsButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
     const currOperand = e.target.value;
     updateCurrValue(currOperand);
+    
+    // display input in result display
+    resultDisplay.textContent = currValue;
 
   });
 });
