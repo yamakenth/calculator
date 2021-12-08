@@ -99,6 +99,8 @@ function updateCurrValues(currOperator) {
     } else {
       currValue = '0';
     }
+  } else if ((currValues.length < 1) && (currOperator === '=')) { // when equal is pressed repeatedly
+    return;
   } else if ((currOperator === '=') && (currValue === '')) { // when operator is '=' but currValue = ''
     currValue = currValues.slice(-2, -1);
   } else if (currValue === '') { // when opeator is !'=' but currValue = ''
