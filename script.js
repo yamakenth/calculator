@@ -1,3 +1,82 @@
+// query selector 
+const calculationDisplay = document.querySelector('#calculation');
+const resultDisplay = document.querySelector('#result');
+const Allbuttons = document.querySelectorAll('button');
+const deleteButtons = document.querySelectorAll('.row-1 > button');
+const allClearButton = document.querySelector('.all-clear');
+const clearButton = document.querySelector('.clear');
+const operandsButtons = document.querySelectorAll('.operands');
+const operatorButtons = document.querySelectorAll('.operators');
+
+// current value that user input 
+let currValue = '';
+// store current values 
+let currValues = [];
+
+// eventListener for operands
+operandsButtons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    const currOperand = e.target.value;
+    updateCurrValue(currOperand);
+
+  });
+});
+
+// eventListener for operators
+operatorButtons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    const currOperator = e.target.value;
+    updateCurrValues(currOperator);
+    
+    
+
+  });
+});
+
+// append input to currValue
+// take in current operand input 
+// return no result 
+function updateCurrValue(currOperand) {
+  // disable '.' input if it is already in currValue
+  if ((currValue.includes('.')) && (currOperand === '.')) {
+    return;
+  }
+
+  // append input in currValue
+  currValue += currOperand;
+  console.log(currValue);
+}
+
+// update currValues array 
+// take in current operator input 
+// return no result 
+function updateCurrValues(currOperator) {
+  // handle special cases 
+  if ((currValues.length < 1) && (currValue === '')) { // when operator is the very first input 
+    // if operator is '=' then do nothing else currValue = '0'
+    if (currOperator === '=') {
+      return;
+    } else {
+      currValue = '0';
+    }
+  } else if ((currOperator === '=') && (currValue === '')) { // when operator is '=' but currValue = ''
+    currValue = currValues.slice(-2, -1);
+  } else if (currValue === '') { // when opeator is !'=' but currValue = ''
+    currValues[currValues.length - 1] = currOperator;
+    currValue = '';
+    console.log(currValues);
+    return;
+  }
+
+  // push currValue and operator in to currValues array then reset currValue
+  currValues.push(parseFloat(currValue), currOperator);
+  currValue = '';
+  console.log(currValues);
+}
+
+
+
+/*
 // store current display value (start with 0)
 let displayValue = '0';
 // store array of display values until equal 
@@ -188,3 +267,4 @@ function formatCalculationDisplay(displayValueArray) {
 function roundNumber(num) {
   return Math.round(num * 10e5) / 10e5;
 }
+*/
