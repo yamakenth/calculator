@@ -19,7 +19,7 @@ operandsButtons.forEach((button) => {
     const currOperand = e.target.value;
     updateCurrValue(currOperand);
     // display input in result display
-    resultDisplay.textContent = currValue;
+    resultDisplay.textContent = roundNumber(currValue, 9);
 
   });
 });
@@ -30,12 +30,12 @@ operatorButtons.forEach((button) => {
     const currOperator = e.target.value;
     updateCurrValues(currOperator);
     // display calculation 
-    calculationDisplay.textContent = currValues;
+    calculationDisplay.textContent = formatCalculationDisplay(currValues);
     // operate when currValues array have enough elements
     if (currValues.length === 4) {
       const result = calculateResult(currOperator);
       // display result in result display 
-      resultDisplay.textContent = result;
+      resultDisplay.textContent = roundNumber(result, 9);
     }
 
 
@@ -152,8 +152,36 @@ function calculateResult(currOperator) {
   return result;
 }
 
+// format calculation display 
+// take in array to display 
+// retun string to print 
+function formatCalculationDisplay(currValues) {
+  const arrayToDisplay = [];
+  for (let i = 0; i < currValues.length; i++) {
+    let elementToPush = currValues[i];
+    
+    if (elementToPush === '*') {
+      elementToPush = '×';
+    } else if (elementToPush === '/') {
+      elementToPush = '÷';
+    }
 
+    if (Number(elementToPush)) {
+      elementToPush = roundNumber(elementToPush, 6);
+    }
 
+    arrayToDisplay.push(elementToPush);
+  }
+  
+  return arrayToDisplay.join(' ');
+}
+
+// round numbers to 'dec' decimal places
+// take in number to round, decimal places to round to
+// return rounded number 
+function roundNumber(num, dec) {
+  return Math.round(num * (10 ** dec)) / (10 ** dec);
+}
 
 
 /*
