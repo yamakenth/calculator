@@ -166,6 +166,16 @@ function calculateResult(currOperator) {
   const firstNum = currValues[0];
   const secondNum = currValues[2];
   const operator = currValues[1];
+
+  // check if div by 0
+  if ((secondNum === 0) && (operator === '/')) {
+    currValue = '0';
+    currValues = currValues.slice(0, -2);
+    alert('You cannot divide a number by 0!');
+    calculationDisplay.textContent = formatCalculationDisplay(currValues);
+    // console.log('You cannot divide a number by 0!', `currValues: ${currValues}, currValue = ${currValue}`);
+    return 0;
+  }
   
   console.log('ready to operate');
   const result = operate(firstNum, secondNum, operator);
