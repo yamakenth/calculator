@@ -100,6 +100,28 @@ function divide(a, b) {
   return a / b;
 }
 
+// perform operation on two numbers with given operator
+// take in one operator and two numbers 
+// return result 
+function operate(a, b, operator) {
+  if (operator === '+') {
+    return add(a, b);
+  } else if (operator === '-') {
+    return subtract(a, b);
+  } else if (operator === '*') {
+    return multiply(a, b);
+  } else if (operator === '/') {
+    return divide(a, b);
+  }
+
+  return;
+}
+
+
+
+
+
+
 
 /*
 // store current display value (start with 0)
