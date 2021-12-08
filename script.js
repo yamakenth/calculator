@@ -19,7 +19,7 @@ operandsButtons.forEach((button) => {
     const currOperand = e.target.value;
     updateCurrValue(currOperand);
     // display input in result display   
-    resultDisplay.textContent = (Number(currValue)) ? roundNumber(currValue, 9) : currValue;    
+    resultDisplay.textContent = (Number(currValue)) ? roundNumber(currValue, 9) : currValue; 
   });
   
   // animation 
@@ -53,6 +53,12 @@ allClearButton.addEventListener('click', () => {
   currValues = [];
   calculationDisplay.textContent = '';
   resultDisplay.textContent = '0';
+});
+
+// eventListener for clear button 
+clearButton.addEventListener('click', () => {
+  currValue = currValue.slice(0, -1);
+  resultDisplay.textContent = (Number(currValue)) ? roundNumber(currValue, 9) : currValue;
 });
 
 // eventListener for all buttons 
@@ -204,12 +210,7 @@ function roundNumber(num, dec) {
 
 
 /*
-// eventListener for clear button 
-const clearButton = document.querySelector('.clear');
-clearButton.addEventListener('click', () => {
-  displayValue = displayValue.slice(0, -1);
-  document.querySelector('#result').textContent = displayValue;
-});
+
 
 // animation eventListner for clear buttons 
 const deleteButtons = document.querySelectorAll('.row-1 > button');
