@@ -27,7 +27,12 @@ operatorButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
     const currOperator = e.target.value;
     updateCurrValues(currOperator);
-    
+    // operate when currValues array have enough elements
+    if (currValues.length === 4) {
+      calculateResult(currOperator);
+    }
+
+
   });
 });
 
@@ -117,7 +122,28 @@ function operate(a, b, operator) {
   return;
 }
 
-
+// calculate result 
+// take in current operator
+// return no results 
+function calculateResult(currOperator) {
+  const firstNum = currValues[0];
+  const secondNum = currValues[2];
+  const operator = currValues[1];
+  
+  console.log('ready to operate');
+  const result = operate(firstNum, secondNum, operator);
+  console.log(`result: ${result}, currValues: ${currValues}`);
+  
+  console.log('manipulate array');
+  if (currValues[currValues.length - 1] === '=') {
+    currValues = [];
+    currValue = String(result);
+  } else {
+    currValues = [result, currOperator];
+    currValue = '';
+  }
+  console.log(`result: ${result}, currValues: ${currValues}`);
+}
 
 
 
