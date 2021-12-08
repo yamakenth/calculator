@@ -18,7 +18,6 @@ operandsButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
     const currOperand = e.target.value;
     updateCurrValue(currOperand);
-    
     // display input in result display
     resultDisplay.textContent = currValue;
 
@@ -32,8 +31,11 @@ operatorButtons.forEach((button) => {
     updateCurrValues(currOperator);
     // operate when currValues array have enough elements
     if (currValues.length === 4) {
-      calculateResult(currOperator);
+      const result = calculateResult(currOperator);
+      // display result in result display 
+      resultDisplay.textContent = result;
     }
+
 
 
   });
@@ -127,7 +129,7 @@ function operate(a, b, operator) {
 
 // calculate result 
 // take in current operator
-// return no results 
+// return result 
 function calculateResult(currOperator) {
   const firstNum = currValues[0];
   const secondNum = currValues[2];
@@ -146,6 +148,7 @@ function calculateResult(currOperator) {
     currValue = '';
   }
   console.log(`result: ${result}, currValues: ${currValues}`);
+  return result;
 }
 
 
