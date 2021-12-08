@@ -47,6 +47,14 @@ operatorButtons.forEach((button) => {
   button.addEventListener('mouseleave', (e) => e.target.classList.remove('hovering-operator-button'));
 });
 
+// eventListener for all-clear button 
+allClearButton.addEventListener('click', () => {
+  currValue = '';
+  currValues = [];
+  calculationDisplay.textContent = '';
+  resultDisplay.textContent = '0';
+});
+
 // eventListener for all buttons 
 allButtons.forEach((button) => {
   button.addEventListener('mouseenter', (e) => e.target.classList.add('hovering'));
@@ -196,16 +204,6 @@ function roundNumber(num, dec) {
 
 
 /*
-
-// eventListener for all-clear button 
-const allClearButton = document.querySelector('.all-clear');
-allClearButton.addEventListener('click', () => {
-  displayValue = '0';
-  displayValueArray = [];
-  document.querySelector('#calculation').textContent = '';
-  document.querySelector('#result').textContent = '0';
-});
-
 // eventListener for clear button 
 const clearButton = document.querySelector('.clear');
 clearButton.addEventListener('click', () => {
