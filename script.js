@@ -18,7 +18,7 @@ operandsButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
     const currOperand = e.target.value;
     updateCurrValue(currOperand);
-    // display input in result display   
+    // display input in result display 
     resultDisplay.textContent = (Number(currValue)) ? roundNumber(currValue, 9) : currValue; 
   });
   
