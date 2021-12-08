@@ -84,7 +84,7 @@ function updateCurrValue(currOperand) {
 
   // append input in currValue
   currValue += currOperand;
-  console.log(currValue);
+  // console.log(currValue);
 }
 
 // update currValues array 
@@ -106,14 +106,14 @@ function updateCurrValues(currOperator) {
   } else if (currValue === '') { // when opeator is !'=' but currValue = ''
     currValues[currValues.length - 1] = currOperator;
     currValue = '';
-    console.log(currValues);
+    // console.log(currValues);
     return;
   }
 
   // push currValue and operator in to currValues array then reset currValue
   currValues.push(parseFloat(currValue), currOperator);
   currValue = '';
-  console.log(currValues);
+  // console.log(currValues);
 }
 
 // add two numbers 
@@ -179,11 +179,11 @@ function calculateResult(currOperator) {
     return 0;
   }
   
-  console.log('ready to operate');
+  // console.log('ready to operate');
   const result = operate(firstNum, secondNum, operator);
-  console.log(`result: ${result}, currValues: ${currValues}`);
+  // console.log(`result: ${result}, currValues: ${currValues}`);
   
-  console.log('manipulate array');
+  // console.log('manipulate array');
   if (currValues[currValues.length - 1] === '=') {
     currValues = [];
     currValue = String(result);
@@ -191,7 +191,7 @@ function calculateResult(currOperator) {
     currValues = [result, currOperator];
     currValue = '';
   }
-  console.log(`result: ${result}, currValues: ${currValues}`);
+  // console.log(`result: ${result}, currValues: ${currValues}`);
   return result;
 }
 
