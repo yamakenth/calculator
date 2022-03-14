@@ -9,9 +9,6 @@
 - Accepts user input via on-screen button clicks (keyboard inputs not yet supported)
 - Clears all data on display with "AC" and clears one digit from current input with "C"
 - Provides input feedback via animation and change of color on button hover
-## Project Objective
-- Create a simple web application using vanilla JavaScript
-- Practice DOM manipulation using vanilla JavaScript
 ## Technologies Used
 - HTML
 - CSS
